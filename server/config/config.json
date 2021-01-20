@@ -1,23 +1,13 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "database_development",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "use_env_variable": "postgres://jmsnliax:JmfDbHs0vV4E7Ya1na1IzT5BZldhxuXx@kandula.db.elephantsql.com:5432/jmsnliax"
   },
   "test": {
-    "username": "root",
+    "username": "postgres",
     "password": null,
-    "database": "database_test",
+    "database": "bookseller-dev",
     "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
-  "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "port": 5432,
+    "dialect": "postgres"
   }
 }
