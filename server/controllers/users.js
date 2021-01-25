@@ -28,9 +28,9 @@ module.exports = {
     .catch(error => res.status(400).send(error));
   },
   
-  retrieve(req,res) {
+  retrieve(req, res) {
     return User
-    .findById(req.params.userId, {
+    .findByPk(req.params.userId, {
         include:[{
             model:Address,
             as:'addresses'
@@ -49,7 +49,7 @@ module.exports = {
   
   destroy(req, res) {
     return User
-      .findById(req.params.userId)
+      .findByPk(req.params.userId)
       .then(user => {
         if (!user) {
           return res.status(400).send({
@@ -66,7 +66,7 @@ module.exports = {
   
   update(req, res) {
     return User
-      .findById(req.params.userId)
+      .findByPk(req.params.userId)
       .then(user => {
         if (!user) {
           return res.status(404).send({
