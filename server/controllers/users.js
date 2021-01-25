@@ -9,7 +9,8 @@ module.exports = {
         firstName:req.body.firstName,
         lastName:req.body.lastName,
         email:req.body.email,
-        password:req.body.password
+        password:req.body.password,
+        stripeCustomerId:req.body.stripeCustomerId
     })
     .then(user => res.status(201).send(user))
     .catch(error => res.status(400).send(error));
