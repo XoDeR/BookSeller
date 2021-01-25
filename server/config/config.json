@@ -1,6 +1,6 @@
 {
   "development": {
-    "use_env_variable": "postgres://jmsnliax:JmfDbHs0vV4E7Ya1na1IzT5BZldhxuXx@kandula.db.elephantsql.com:5432/jmsnliax"
+    "use_env_variable": "DATABASE_URL"
   },
   "test": {
     "username": "postgres",

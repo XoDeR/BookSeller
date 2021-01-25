@@ -1,27 +1,50 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+const bcrypt = require('bcryptjs');
+
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
+  const User = sequelize.define('User', {
+    firstName: {
+      DataTypes.STRING,
+      allowNull: false
+    },
+    lastName: {
+      DataTypes.STRING,
+      allowNull: false
+    },
+    email: {
+      DataTypes.STRING,
+      allowNull: false,
+      unique:true
+    },
+    password: {
+      DataTypes.STRING,
+      allowNull: false
+    },
+    stripeCustomerId: {
+      DataTypes.STRING,
+      allowNull: false,
+      unique:true
     }
+    }, {});
+  
+  User.associate = function(models) {
+      User.hasMany(models.Address,{
+        foreignKey:'userId',
+        as:'addresses'
+      })
+      User.hasMany(models.Order,{
+        foreignKey:'userId',
+        as:'orders'
+      })
   };
-  User.init({
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    stripeCustomerId: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'User',
-  });
+  
+  User.prototype.comparePassword = function comparePassword(password,callback){
+    bcrypt.compare(password,this.password,callback);
+  }
+  
+  User.hook('beforeCreate',(user,options)=>{
+      const salt = bcrypt.genSaltSync(10);
+      user.password = bcrypt.hashSync(user.password, salt);
+  })
+  
   return User;
 };

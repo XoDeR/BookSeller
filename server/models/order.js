@@ -1,28 +1,36 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Order extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
+  const Order = sequelize.define('Order', {
+    userId: {
+      DataTypes.INTEGER,
+      allowNull: false
+    },
+    bookQuantity: {
+      DataTypes.JSON,
+      allowNull: false
+    },
+    totalAmount: {
+      DataTypes.FLOAT,
+      allowNull: false
+    },
+    status: {
+      DataTypes.ENUM,
+      values:['paid','cancelled','fulfilled','returned'],
+      allowNull: false
+    },
+    addressId: {
+      DataTypes.INTEGER,
+      allowNull: false
+    },
+    chargeId: {
+      DataTypes.STRING,
+      allowNull: false
     }
+  }, {});
+  Order.associate = function(models) {
+    Order.belongsTo(models.User,{
+      foreignKey:'userId',
+      onDelete:'CASCADE'
+    })
   };
-  Order.init({
-    userId: DataTypes.INTEGER,
-    bookQuantity: DataTypes.JSON,
-    totalAmount: DataTypes.FLOAT,
-    status: DataTypes.ENUM,
-    addressId: DataTypes.INTEGER,
-    chargeId: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Order',
-  });
   return Order;
 };
