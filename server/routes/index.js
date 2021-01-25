@@ -7,8 +7,8 @@ const ordersController = require('../controllers').orders;
 const express = require('express');
 const router = new express.Router();
 
-router.get('/',(req,res) => res.status(200).send({
-    message:'Welcome to the BookSeller API',
+router.get('/', (req, res) => res.status(200).send({
+  message:'Welcome to the BookSeller API',
 }));
 
 router.post('/books', booksController.create);
