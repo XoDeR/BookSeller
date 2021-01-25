@@ -1,4 +1,4 @@
-const stripe = require("stripe")(sk_test_51IDaPbEcQoHsXCCF6WcdCXGqsulPALNrwxyUASMMpKmtVdB510T5VYkqpIV8nSkBsKFBZA75ePFE8UR49XmQviWr00ChwSF0Ce);
+const stripe = require("stripe")("sk_test_51IDaPbEcQoHsXCCF6WcdCXGqsulPALNrwxyUASMMpKmtVdB510T5VYkqpIV8nSkBsKFBZA75ePFE8UR49XmQviWr00ChwSF0Ce");
 
 module.exports = {
   
@@ -40,27 +40,26 @@ module.exports = {
   
   list(req, res) {
   stripe.charges.list(
-      { limit: 3 },
-      function(err, ) {
-        if (err) {
-            return res.status(400).send(err)
-        }
-        return res.status(200).send(charges)
+    { limit: 3 },
+    function(err, ) {
+      if (err) {
+          return res.status(400).send(err)
       }
+      return res.status(200).send(charges)
+    }
     );
   },
   
   listCustomers(req, res) {
-      stripe.customers.list(
-          { limit: 3 },
-          function(err, customers) {
-            if (err) {
-              return res.status(400).send(err)
-          }
-          return res.status(200).send(customers)
-          }
-        );
-        
+    stripe.customers.list(
+      { limit: 3 },
+      function(err, customers) {
+        if (err) {
+          return res.status(400).send(err)
+      }
+      return res.status(200).send(customers)
+      }
+    );
   }
 
 }
