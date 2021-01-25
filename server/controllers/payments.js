@@ -1,4 +1,4 @@
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const stripe = require("stripe")(sk_test_51IDaPbEcQoHsXCCF6WcdCXGqsulPALNrwxyUASMMpKmtVdB510T5VYkqpIV8nSkBsKFBZA75ePFE8UR49XmQviWr00ChwSF0Ce);
 
 module.exports = {
   
