@@ -23,7 +23,7 @@ module.exports = {
   
   update(req, res) {
     return Book
-      .findById(req.params.bookId)
+      .findByPk(req.params.bookId)
       .then(book => {
         if (!book) {
           return res.status(404).send({
@@ -45,7 +45,7 @@ module.exports = {
       
   destroy(req, res) {
     return Book
-      .findById(req.params.bookId)
+      .findByPk(req.params.bookId)
       .then(book => {
         if (!book) {
           return res.status(400).send({
@@ -62,7 +62,7 @@ module.exports = {
 
   contact(req, res){
     return Book
-    .findById(req.params.bookId)
+    .findByPk(req.params.bookId)
     .then(book => {
       if (!book){
         return res.status(400).send({
