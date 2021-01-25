@@ -27,7 +27,7 @@ module.exports = {
     {
       const charge = await stripe.charges.create({
           amount:req.body.amount,
-          currency:'aud',
+          currency:'eur',
           customer:req.body.customerStripeId
       },{
           idempotency_key:req.body.idemKey
