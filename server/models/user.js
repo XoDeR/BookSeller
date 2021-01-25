@@ -3,24 +3,24 @@ const bcrypt = require('bcryptjs');
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     firstName: {
-      DataTypes.STRING,
+      type:DataTypes.STRING,
       allowNull: false
     },
     lastName: {
-      DataTypes.STRING,
+      type:DataTypes.STRING,
       allowNull: false
     },
     email: {
-      DataTypes.STRING,
+      type:DataTypes.STRING,
       allowNull: false,
       unique:true
     },
     password: {
-      DataTypes.STRING,
+      type:DataTypes.STRING,
       allowNull: false
     },
     stripeCustomerId: {
-      DataTypes.STRING,
+      type:DataTypes.STRING,
       allowNull: false,
       unique:true
     }
@@ -37,14 +37,14 @@ module.exports = (sequelize, DataTypes) => {
       })
   };
   
-  User.prototype.comparePassword = function comparePassword(password,callback){
+  User.prototype.comparePassword = function comparePassword(password, callback) {
     bcrypt.compare(password,this.password,callback);
   }
   
-  User.hook('beforeCreate',(user,options)=>{
-      const salt = bcrypt.genSaltSync(10);
-      user.password = bcrypt.hashSync(user.password, salt);
-  })
+  ////User.hook('beforeCreate', (user,options) => {
+  ////    const salt = bcrypt.genSaltSync(10);
+  ////    user.password = bcrypt.hashSync(user.password, salt);
+  ////})
   
   return User;
 };

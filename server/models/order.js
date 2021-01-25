@@ -1,28 +1,28 @@
 module.exports = (sequelize, DataTypes) => {
   const Order = sequelize.define('Order', {
     userId: {
-      DataTypes.INTEGER,
+      type:DataTypes.INTEGER,
       allowNull: false
     },
     bookQuantity: {
-      DataTypes.JSON,
+      type:DataTypes.JSON,
       allowNull: false
     },
     totalAmount: {
-      DataTypes.FLOAT,
+      type:DataTypes.FLOAT,
       allowNull: false
     },
     status: {
-      DataTypes.ENUM,
+      type:DataTypes.ENUM,
       values:['paid','cancelled','fulfilled','returned'],
       allowNull: false
     },
     addressId: {
-      DataTypes.INTEGER,
+      type:DataTypes.INTEGER,
       allowNull: false
     },
     chargeId: {
-      DataTypes.STRING,
+      type:DataTypes.STRING,
       allowNull: false
     }
   }, {});

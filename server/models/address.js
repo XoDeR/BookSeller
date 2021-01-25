@@ -1,23 +1,23 @@
 module.exports = (sequelize, DataTypes) => {
   const Address = sequelize.define('Address', {
     addressLine: {
-      DataTypes.STRING,
+      type:DataTypes.STRING,
       allowNull:false
     },
     city: {
-      DataTypes.STRING,
+      type:DataTypes.STRING,
       allowNull:false
     },
     state: {
-      DataTypes.STRING,
+      type:DataTypes.STRING,
       allowNull:false
     },
     zip: {
-      DataTypes.INTEGER,
+      type:DataTypes.INTEGER,
       allowNull:false
     },
     country: {
-      DataTypes.STRING,
+      type:DataTypes.STRING,
       allowNull:false
     },
   }, {});
