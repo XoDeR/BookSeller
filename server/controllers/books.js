@@ -16,7 +16,7 @@ module.exports = {
   
   list(req, res){
       return Book
-      .all()
+      .findAll()
       .then(books => res.status(200).send(books))
       .catch(error => res.status(400).send(error));
   },
