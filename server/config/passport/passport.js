@@ -8,26 +8,26 @@ module.exports = function(passport, user) {
 
   passport.use('local-signup', new LocalStrategy(
     {
-        usernameField:'email',
-        passwordField:'password',
-        passReqToCallback:true
+      usernameField:'email',
+      passwordField:'password',
+      passReqToCallback:true
     },
 
     function(req,email,password,done){
       bcrypt.hash(password,saltRounds).then(function(hashPassword) {
         User.create({
-            firstName:req.body.firstName,
-            lastName:req.body.lastName,
-            email:email,
-            password:hashPassword
+          firstName:req.body.firstName,
+          lastName:req.body.lastName,
+          email:email,
+          password:hashPassword
         })
         .then(function(newUser) {
-            if (!newUser) {
-                return done(null,false);
-            }
-            if (newUser) {
-                return done(null,newUser);
-            }
+          if (!newUser) {
+            return done(null,false);
+          }
+          if (newUser) {
+            return done(null,newUser);
+          }
         })
         .catch(err => done(err));
       }
