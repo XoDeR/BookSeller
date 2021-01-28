@@ -1,0 +1,58 @@
+@import "~antd/dist/antd.css";
+
+.App {
+  text-align: center;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+.table {
+  border: 1px solid #dddddd;
+}
+
+.table-header {
+  font-family: sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+  color: #666666;
+}
+
+.table-striped > tbody > tr:nth-child(2n + 1) > td,
+.table-striped > tbody > tr:nth-child(2n + 1) > th {
+  background-color: #f5ff9b;
+}
+
+.table-body {
+  font-size: 15px;
+  color: black;
+  font-weight: 200;
+  font-family: sans-serif;
+}
+
+a {
+  color: black;
+}
+
+.highlight {
+  color: red;
+}
+
+.StripeElement {
+  display: block;
+  margin: 10px 0 20px 0;
+  max-width: 500px;
+  padding: 10px 14px;
+  box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px,
+    rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
+  border-radius: 4px;
+  background: white;
+}
+
+.StripeElement--focus {
+  box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px,
+    rgba(0, 0, 0, 0.0784314) 0px 1px 3px;
+  -webkit-transition: all 150ms ease;
+  transition: all 150ms ease;
+}
