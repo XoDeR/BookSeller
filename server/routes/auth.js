@@ -100,12 +100,12 @@ router.post('/login',(req,res,next)=> {
 
 router.post('/signup',(req, res, next)=>{
   const validationResult = validateSignupForm(req.body);
-  if(!validationResult.success){
-      return res.status(400).json({
-          success:false,
-          message:validationResult.message,
-          errors:validationResult.errors
-      })
+  if (!validationResult.success) {
+    return res.status(400).json({
+      success:false,
+      message:validationResult.message,
+      errors:validationResult.errors
+    })
   }
 
   return passport.authenticate('local-signup',(err,user,info)=>{
