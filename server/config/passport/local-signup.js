@@ -14,7 +14,8 @@ module.exports = new PassportLocalStrategy({
       firstName:req.body.firstName.trim(),
       lastName:req.body.lastName.trim(),
       email:email.toLowerCase().trim(),
-      password:password.trim()
+      password:password.trim(),
+      stripeCustomerId:"ASDFGHJKLzxcvbnm12345678"
     })
     .then(function(newUser){
         if(!newUser){
