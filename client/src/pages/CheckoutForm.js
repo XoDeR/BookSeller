@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as OrderActions from "../actions/order";
-const uuidv4 = require("uuid/v4");
+import {v4 as uuidv4} from 'uuid';
 
 const Container = styled.div`
   max-width: 80%;
