@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Button, message, Icon } from "antd";
+import { Button, message } from "antd";
+import Icon from '@ant-design/icons';
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 

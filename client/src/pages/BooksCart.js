@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Button, Icon } from "antd";
+import { Button } from "antd";
+import Icon from '@ant-design/icons';
 import BookCartRow from "../components/BookCartRow";
 import { Divider } from "antd";
 import { connect } from "react-redux";
