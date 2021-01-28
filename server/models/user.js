@@ -38,13 +38,13 @@ module.exports = (sequelize, DataTypes) => {
   };
   
   User.prototype.comparePassword = function comparePassword(password, callback) {
-    bcrypt.compare(password,this.password,callback);
+    bcrypt.compare(password, this.password,callback);
   }
   
-  ////User.hook('beforeCreate', (user,options) => {
-  ////    const salt = bcrypt.genSaltSync(10);
-  ////    user.password = bcrypt.hashSync(user.password, salt);
-  ////})
+  User.addHook('beforeCreate', (user, options) => {
+      const salt = bcrypt.genSaltSync(10);
+      user.password = bcrypt.hashSync(user.password, salt);
+  })
   
   return User;
 };
